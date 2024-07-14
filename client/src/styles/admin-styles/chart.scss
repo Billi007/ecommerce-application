@@ -1,0 +1,33 @@
+.chart-container {
+    padding: 2.5rem;
+    background-color: white;
+    overflow-y: auto;
+    > h1 {
+      margin: 0 0 3rem 2rem;
+      font-weight: 400;
+      font-size: 2rem;
+     
+    }
+    > section {
+      width: 80%;
+      padding: 3rem auto;
+     
+  
+      > div {
+        max-width: 25rem;
+        margin: auto;
+        margin-top: 7rem;
+        margin-bottom: -1rem;
+      }
+  
+      > h2 {
+        margin: 2rem 0;
+        text-align: center;
+        @include heading(1px);
+        font-size: 28px;
+      }
+    }
+    
+  
+    
+  }

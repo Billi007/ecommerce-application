@@ -1,0 +1,285 @@
+@import "./admin-styles/mixin.scss";
+@import 'home';
+@import 'cart';
+@import 'shipping';
+@import 'login';
+@import 'search';
+@import 'orders';
+@import './admin-styles/dashboard.scss';
+@import './admin-styles/product.scss';
+@import './admin-styles/customer.scss';
+@import './admin-styles/Transactions.scss';
+@import './admin-styles/chart.scss';
+@import './admin-styles/dashboardApp.scss';
+
+
+body{
+  user-select: none;
+  min-height: 100vh;
+}
+
+:root {
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+a {
+    text-decoration: none;
+    color: black;
+  }
+  
+  .red {
+    color: red;
+  }
+  .purple {
+    color: rgb(47, 0, 255);
+  }
+  .green {
+    color: rgb(0, 195, 0);
+  }
+  .white {
+    color: white;
+  }
+
+  $color1: white;
+  $color2: rgb(46, 46, 46);
+  $color3: rgb(17, 76, 107);
+
+  .order-container{
+    max-width: 1367px;
+    width: 100%;
+    margin: auto;
+    overflow: auto;
+
+    > h1 {
+      @include heading(2px);
+      margin: 2rem 0;
+      font-size: 2rem;
+    }
+  }
+
+  .header{
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    h2{
+      color: $color1;
+      position: relative;
+      right: 83%;
+    }
+  @include flex(row,flex-end, stretch);
+  gap: 1.5rem;
+  padding:.5rem;
+  background-color: rgb(17, 76, 107);
+  align-items: center;
+  text-align: center;
+  
+  a{
+    color: $color1;
+    font-size: 1rem;
+
+    &:hover{
+      color: #c0c0c0 ;
+    }
+  }
+  }
+  > button{
+    border:none;
+    cursor: pointer;
+    background-color: transparent;
+    color: white;
+    font-size: 1rem;
+
+    &:hover{
+      color: #c0c0c0 ;
+    }
+  }
+   dialog{
+    width: 100px;
+    border: 1px solid white;
+    border-radius: 5px;
+    padding: 3px;
+    background-color:rgb(33, 106, 146) ;
+    position: absolute;
+    left: calc(100% - 100px);
+    top: calc(100% - 0px);
+    
+    >div{
+      @include flex(column, flex-start, center);
+      gap:.5rem;
+      padding: 1rem;
+     
+    }
+
+  }
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  .admin-container{
+    @include grid(1fr 4fr, 2rem);
+    background-color: rgb(235, 241, 253);
+
+    > aside {
+      position: -webkit-sticky; /* For Safari */
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: hidden;
+      width: 100%;
+      background-color: rgb(33, 106, 146);
+      padding: 1rem;
+      z-index: 10;
+      overflow-y: auto;
+  
+      &::-webkit-scrollbar {
+        display: none;
+      }
+
+      > h2{
+        color: white;
+      }
+    
+      > div {
+        margin: 2rem 1rem;
+        > h5 {
+          @include heading(2px);
+          opacity: 0.8;
+          margin: 1.2rem 0;
+          color: white;
+        }
+        ul{
+            @include flex(column, unset, unset);
+            gap:  0.5rem;
+            list-style: none;
+            
+            > li {
+                padding: 0.5rem 1rem;
+                border-radius: 10px;
+
+               > a {
+                @include flex(row, unset);
+                gap: .5rem;
+                   
+                     font-weight: 500;
+                    font-size: 1rem;
+                  }
+            }
+        }
+    }
+  }
+}
+.table {
+  border-collapse: collapse;
+  width: 100%;
+  th,
+  td {
+    padding: 8px;
+    text-align: left;
+    vertical-align: middle;
+  }
+
+  th {
+    font-weight: bold;
+    color: #0000009e;
+    font-size: 1.1rem;
+    font-weight: 400;
+    padding: 2rem 1rem;
+  }
+
+  tbody {
+    tr {
+      box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.093);
+    }
+
+    td {
+      padding: .7rem;
+
+      img {
+        width: 4rem;
+        height: 4rem;
+        object-fit: contain;
+        border-radius: 10px;
+      }
+      a {
+        text-decoration: none;
+        background-color: rgba(44, 104, 255, 0.455);
+        color: rgba(44, 104, 255);
+        padding: 0.25rem 0.5rem;
+        border-radius: 4px;
+      }
+
+      &:first-child {
+        border-left: none;
+      }
+
+      &:last-child {
+        border-right: none;
+      }
+    }
+  }
+}
+
+.table-pagination {
+  @include flex;
+  padding: 2rem;
+  > button {
+    margin: 0 10px;
+    padding: 0.5rem 1rem;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: rgba(0, 115, 255);
+    color: white;
+    &:disabled {
+      background-color: rgba(38, 38, 38, 0.141);
+      cursor: not-allowed;
+    }
+  }
+}

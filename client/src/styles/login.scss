@@ -1,0 +1,57 @@
+.login{
+ height: 90vh;
+ @include flex(column);
+
+ > form{
+    width: 100%;
+    max-width: 350px;
+    height: 80%;
+    padding: 2rem;
+    @include baseShadow;
+    @include flex(column, center, stretch);
+    gap: 1rem;
+
+    > h1 {
+        @include heading(2px);
+        text-align: center;
+
+    }
+    > div {
+        width: 100%;
+        @include flex(column, flex-start, stretch);
+        font-size: 1rem;
+        gap: 0.2rem;
+     > input, 
+     > select {
+        @include inputStyle;
+        border: 0.5px solid rgb(202, 202, 202);
+        border-radius: 5px;
+     }
+     > p {
+        text-align: center;
+        margin: 1rem;
+      }
+      button {
+        width: 80%;
+        margin: auto;
+        height: 3rem;
+        cursor: pointer;
+        border: .1px solid rgb(202, 202, 202);
+        background-color:rgb(6, 90, 135);
+        color: white;
+        @include flex;
+        border-radius: 3px;
+        font-size: 1rem;
+        > svg {
+          margin: 5px;
+          width: 20%;
+          height: 70%;
+          opacity: 0.9;
+        }
+        &:hover {
+          opacity: 0.9;
+        }
+    }
+ }
+ }
+}

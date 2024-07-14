@@ -1,0 +1,12 @@
+.customer-box{
+    height: 100vh;
+    padding: 1.5rem;
+    overflow: auto;
+   
+
+    > h2{
+        font-weight: 400;
+        font-size: 2rem;
+        border-bottom: 1px solid rgb(136, 136, 136);
+    }
+}

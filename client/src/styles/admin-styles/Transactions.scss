@@ -1,0 +1,84 @@
+.dashboard-transaction-box{
+    padding: 2rem;
+    
+    > h2{
+        font-weight: 400;
+        font-size: 2rem;
+        border-bottom: 1px solid rgb(136, 136, 136);
+
+    }
+}
+
+.transaction-manager{
+    height: 100vh;
+    padding: 3rem;
+    margin: auto;
+   @include flex(row, center, unset);
+   gap: 1rem;
+    >section {
+        background-color: white;
+        width: 400px;
+        height: 85vh;
+        max-width: 600px;
+        border-radius: 5px;
+        padding: 1.5rem;
+        box-shadow: 5px 5px 10px rgba(212, 212, 212, 0.216);
+
+        > h2{
+            @include heading(1px);
+            font-size: 1.7rem;
+            text-align: center
+        }
+    }
+    .transaction-product-card{
+        @include flex(row, unset, center);
+        gap: 1rem;
+        margin-top: 2rem;
+        >img {
+            @include square(4rem);
+            object-fit: cover;
+            border-radius: 50%;
+        }
+        >span{
+            margin-left: auto; 
+        }
+    }
+    .shipping-info-card {
+        height: 85vh;
+        width: 350px;
+        max-width: 450px;
+        @include flex(column, unset, unset);
+        padding: 2rem;
+        background-color: white;
+        border-radius: 5px;
+        box-shadow: 5px 5px 10px rgba(212, 212, 212, 0.216);
+        > h1 {
+            text-align: center;
+            @include heading(2px);
+            font-size: 1.7rem;
+        }
+        > h5 {
+            margin: 2rem 0 0 0rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+        > p {
+            margin: 0.2rem;
+            font-size: 14px;
+        }
+        > button {
+            margin: 2rem 0;
+            padding: .8rem;
+            border: none;
+            background-color: rgb(5, 107, 224);
+            color: white;
+            width: 100%;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            &:hover {
+        opacity: 0.8;
+      }
+    }
+}
+}
