@@ -6,7 +6,7 @@ const registerUser = async (req,res) => {
  try {
     const {userName,email,image,dateOfBirth,gender,_id, password} = req.body;
 
-    if(!(userName && email && gender && _id && dateOfBirth && password))
+    if(!(userName && email && gender && _id && dateOfBirth && password && image))
         return res.json({
        status : 401,
        error: "all fields are required."
