@@ -1,19 +1,5 @@
 import mongoose, { Schema } from "mongoose";
 
-interface IUser extends Document {
-    _id: string;
-    image: string;
-    role: "admin" | "user";
-    userName: string;
-    email: string;
-    gender: "male" | "female";
-    dateOfBirth: Date;
-    createdAt: Date;
-    updatedAt: Date;
-    age: number;
-    password: string;
-}
-
 const UserSchema = new Schema(
 {
 _id:{
@@ -70,4 +56,4 @@ UserSchema.virtual("age").get(function () {
     return age;
   });
 
-export const User = mongoose.model<IUser>('user', UserSchema);
+export const User = mongoose.model('user', UserSchema);

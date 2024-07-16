@@ -1,23 +1,17 @@
-import { NextFunction,Request,Response } from "express";
-import { User } from "../models/user.models";
+import { User } from "../models/user.models.js";
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
-import { NewUserRequestBody } from "../types/type.js";
 
 
 //REGISTER
-const registerUser = async (
-    req:Request<{}, {}, NewUserRequestBody>,
-    res: Response,
-    next:NextFunction
-    ) => {
+const registerUser = async (req,res) => {
  try {
     const {userName,email,image,dateOfBirth,gender,_id, password} = req.body;
 
     if(!(userName && email && gender && _id && dateOfBirth && password))
         return res.json({
        status : 401,
-       error: "all fields are required."
+       error: "all fields are required. hello"
       })
  
      let existingUser = await User.findOne({email})
@@ -29,7 +23,7 @@ const registerUser = async (
      }
 
     //hashing password
-    const hashedPassword = async (password: string) => {
+    const hashedPassword = async (password) => {
     return await bcrypt.hash(password, 10);
 }
 const hashPassword = await hashedPassword(password);
@@ -45,7 +39,7 @@ const user = await User.create({
 });
 
 return res.status(200).json({
-        message: "User created successfully",
+        message: `Welcome ${user.userName}`,
         user,
     })
  } catch (error) {
@@ -57,7 +51,7 @@ return res.status(200).json({
 };
 
 //GET ALL USERS
-const getallUser = async (req: Request, res: Response, next: NextFunction) => {
+const getallUser = async (req,res,next) => {
     try {
         const user = await User.find({}).select("-password");
         if(!user){
@@ -79,10 +73,10 @@ const getallUser = async (req: Request, res: Response, next: NextFunction) => {
 };
 
 //GET USER
-const getUser = async(req:Request, res:Response) => {
+const getUser = async(req,res) => {
     try {
         const id = req.params.id;
-        const user = await User.findById(id);
+        const user = await User.findById(id).select("-password");
         if(!user){
             return res.json({
                 status : 401,
@@ -101,7 +95,8 @@ const getUser = async(req:Request, res:Response) => {
     }
 };
 
-const deleteUser = async(req:Request, res:Response) => {
+//DElETE USER
+const deleteUser = async(req,res) => {
     try {
         const id = req.params.id;
         const user = await User.findById(id);
@@ -114,12 +109,12 @@ const deleteUser = async(req:Request, res:Response) => {
         await user.deleteOne()
 ;        return res.json({
             status : 201,
-            user
+            message: "user deleted successfully."
         });
     } catch (error) {
         return res.json({
             status : 500,
-            error: "user deleted successfully.",
+            error: "something went wrong while deleting user.",
         })
     }
 };

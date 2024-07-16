@@ -2,9 +2,10 @@ import express from 'express';
 import mongoose from 'mongoose';
 import morgan from 'morgan';
 import cors from 'cors'
-import userRouter from './routes/user.routes';
+import productRouter from './routes/product.routes.js'
+import userRouter from './routes/user.routes.js'
 import dotenv from 'dotenv';
-import DBNAME from './Constants';
+import DBNAME from './Constants.js';
 const app = express();
 
 //configurations
@@ -20,9 +21,11 @@ app.use(
       credentials: true,
     })
   );
-
-//defining routes
-app.use('/api/v1/user', userRouter);
+  
+  //defining routes
+  app.use('/api/v1/user', userRouter);
+  app.use('/api/v1/product', productRouter);
+  app.use('/upload', express.static("assets"));
 
 //connect to database
 const mongodbConnection = async() => {
