@@ -9,7 +9,7 @@ const registerUser = async (req,res) => {
     if(!(userName && email && gender && _id && dateOfBirth && password))
         return res.json({
        status : 401,
-       error: "all fields are required. hello"
+       error: "all fields are required."
       })
  
      let existingUser = await User.findOne({email})
