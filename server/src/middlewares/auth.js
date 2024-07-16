@@ -1,13 +1,12 @@
 import { User } from '../models/user.models.js';
 
 //ONLY ADMIN CAN ACCESS
-
 export const adminOnly = async(req,res,next) => {
-    const id = req.params.id;
+    const { id } = req.query;
     try {
     if(!id){
         return res.status(400).json({
-            error: "id ni h."
+            error: "invalid ID."
         });
     }
     
