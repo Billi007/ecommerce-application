@@ -1,5 +1,20 @@
 import mongoose, { Schema } from "mongoose";
 
+interface IUser extends Document {
+    _id: string;
+    userName: string;
+    email: string;
+    image: string;
+    role: "admin" | "user";
+    gender: "male" | "female";
+    dob: Date;
+    createdAt: Date;
+    updatedAt: Date;
+    password: string;
+    //   Virtual Attribute
+    age: number;
+  }
+
 const UserSchema = new Schema(
 {
 _id:{
@@ -36,7 +51,7 @@ gender: {
     enum: ['Male', 'Female', 'Other'],
     required: [true, "Please select your gender."],
 },
-dateOfBirth: {
+dob: {
     type: Date,
     required: [true, "Please enter your date of birth."],
 }
@@ -45,7 +60,7 @@ dateOfBirth: {
 
 UserSchema.virtual("age").get(function () {
     const today = new Date();
-    const dob = this.dateOfBirth;
+    const dob = this.dob;
     let age = today.getFullYear() - dob.getFullYear();
   
     if (
