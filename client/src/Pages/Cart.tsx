@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import { VscError } from "react-icons/vsc";
 import CartItem from '../components/Cart_item';
-import img from '../assets/71jG+e7roXL._AC_UF1000,1000_QL80_.jpg'
 import { Link } from 'react-router-dom';
 
 const cartItems = [

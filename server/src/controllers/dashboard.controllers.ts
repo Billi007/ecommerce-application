@@ -204,7 +204,34 @@ const getDashboard = async (req:Request, res:Response) => {
 
 const getPieChart = async (req:Request, res:Response) => {
 
-};
+    let charts;
+
+if(nodeCache.has('admin-pieCharts')) charts = JSON.parse(nodeCache.get('admin-pieCharts')!);
+
+else{
+
+    const [processingOrder, shippedOrder, deliveredOrder] = Promise.all([
+        Order.countDocuments({status: "processing"}),
+        Order.countDocuments({status: "shipped"}),
+        Order.countDocuments({status: "Delivered"})
+    ]);
+
+     const orderFullfilment = {
+        processing: processingOrder,
+        shipped: shippedOrder,
+        delivered: deliveredOrder
+     }
+
+     charts = {
+        orderFullfilment
+     };
+
+     nodeCache.set('admin-pieCharts',JSON.stringify(charts));
+   return res.json({
+        status: 200,
+        charts
+    })
+}};
 
 const getBarChart = async (req:Request, res:Response) => {};
 

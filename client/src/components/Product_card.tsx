@@ -12,7 +12,7 @@ type ProductProps = {
     description: string,
     addToCart: (product: ProductProps) => void,
 }
-function Productcard({name,price,stock,image,productId,addToCart,description}: ProductProps) {
+function Productcard({name,price,image,description}: ProductProps) {
   const [isDescriptionVisible, setDescriptionVisible] = useState(false);
 
   const toggleDescription = () => {
